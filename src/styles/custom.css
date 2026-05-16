@@ -1,0 +1,223 @@
+/* ---------------------------------------------------------
+   Blue theme — austere, dark, monospace-accented.
+   Inspired by lolol.farm.
+   --------------------------------------------------------- */
+
+/* Dark theme (default) */
+:root {
+  /* Accent: vivid sky-blue progression */
+  --sl-color-accent-low: #0a1f3d;
+  --sl-color-accent: #3b82f6;
+  --sl-color-accent-high: #93c5fd;
+
+  /* Text */
+  --sl-color-white: #f0f6fc;
+
+  /* Gray scale shifted toward blue */
+  --sl-color-gray-1: #dbe6f3;
+  --sl-color-gray-2: #a3b6cc;
+  --sl-color-gray-3: #5d7390;
+  --sl-color-gray-4: #2d3b53;
+  --sl-color-gray-5: #131c2e;
+  --sl-color-gray-6: #0b1322;
+  --sl-color-gray-7: #060c18;
+
+  --sl-color-black: #050a14;
+
+  /* Surfaces */
+  --sl-color-bg: #050a14;
+  --sl-color-bg-nav: #050a14;
+  --sl-color-bg-sidebar: #060c18;
+  --sl-color-bg-inline-code: rgba(59, 130, 246, 0.12);
+
+  /* Borders / dividers tinted blue */
+  --sl-color-hairline: #1a2540;
+  --sl-color-hairline-light: #2a3a5f;
+  --sl-color-hairline-shade: #0e1730;
+}
+
+/* Light theme */
+:root[data-theme="light"] {
+  --sl-color-accent-low: #dbeafe;
+  --sl-color-accent: #1d4ed8;
+  --sl-color-accent-high: #0c2c84;
+
+  --sl-color-white: #0a1929;
+
+  --sl-color-gray-1: #0f1d33;
+  --sl-color-gray-2: #1e2d47;
+  --sl-color-gray-3: #4a5a73;
+  --sl-color-gray-4: #8b9bb3;
+  --sl-color-gray-5: #d5e0ec;
+  --sl-color-gray-6: #ecf2f8;
+  --sl-color-gray-7: #f5f9fc;
+
+  --sl-color-black: #f5f9fc;
+
+  --sl-color-bg: #f5f9fc;
+  --sl-color-bg-nav: #f5f9fc;
+  --sl-color-bg-sidebar: #ecf2f8;
+  --sl-color-bg-inline-code: rgba(29, 78, 216, 0.08);
+
+  --sl-color-hairline: #c5d4e6;
+  --sl-color-hairline-light: #aabfd9;
+  --sl-color-hairline-shade: #d8e3f0;
+}
+
+/* ---------------------------------------------------------
+   Typographic tweaks (austere, dense)
+   --------------------------------------------------------- */
+
+:root {
+  --sl-text-h1: 2.25rem;
+  --sl-text-h2: 1.5rem;
+  --sl-text-h3: 1.15rem;
+}
+
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+/* Mono treatment for site title in header */
+header .site-title,
+a.site-title {
+  font-family: var(
+    --sl-font-mono,
+    ui-monospace,
+    SFMono-Regular,
+    "SF Mono",
+    Menlo,
+    Consolas,
+    monospace
+  );
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Inline code: blue tint */
+.sl-markdown-content :not(pre) > code {
+  color: var(--sl-color-accent-high);
+  background: var(--sl-color-bg-inline-code);
+  border: 1px solid var(--sl-color-hairline);
+  padding: 0.1em 0.35em;
+  font-size: 0.9em;
+}
+
+/* Block quotes: accent left border */
+.sl-markdown-content blockquote {
+  border-left: 2px solid var(--sl-color-accent);
+  background: transparent;
+  padding-left: 1rem;
+  color: var(--sl-color-gray-2);
+  font-style: normal;
+}
+
+/* Links: subtle underline w/ accent color, no decorative bloat */
+.sl-markdown-content a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.sl-markdown-content a:hover {
+  color: var(--sl-color-accent-high);
+}
+
+/* ---------------------------------------------------------
+   Header layout: right-align the search box
+   --------------------------------------------------------- */
+
+/* The search lives inside the second flex wrapper in .header.
+   Push its contents to the right edge of its grid column. */
+.header > div:nth-child(2) {
+  justify-content: flex-end;
+}
+
+/* ---------------------------------------------------------
+   Sharp corners across the UI (lolol.farm vibe)
+   --------------------------------------------------------- */
+
+button,
+.card,
+blockquote,
+code,
+pre,
+table,
+.sl-link-card,
+.starlight-aside,
+input,
+select,
+textarea {
+  border-radius: 0 !important;
+}
+
+/* ---------------------------------------------------------
+   Matrix tables: tighten + equal columns + accent header row
+   --------------------------------------------------------- */
+
+.sl-markdown-content table {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  border: 1px solid var(--sl-color-hairline);
+}
+
+.sl-markdown-content table th,
+.sl-markdown-content table td {
+  vertical-align: top;
+  padding: 0.5rem 0.6rem;
+  border-color: var(--sl-color-hairline);
+}
+
+.sl-markdown-content table th {
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-accent-high);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid var(--sl-color-accent);
+}
+
+/* Subtle zebra striping */
+.sl-markdown-content table tbody tr:nth-child(even) {
+  background: rgba(59, 130, 246, 0.03);
+}
+:root[data-theme="light"] .sl-markdown-content table tbody tr:nth-child(even) {
+  background: rgba(29, 78, 216, 0.04);
+}
+
+/* ---------------------------------------------------------
+   Asides (admonitions) — flat, blue-accented
+   --------------------------------------------------------- */
+
+.starlight-aside {
+  border-left-width: 3px;
+  background: var(--sl-color-gray-6);
+}
+
+.starlight-aside--note {
+  border-color: var(--sl-color-accent);
+}
+
+.starlight-aside--caution {
+  border-color: #fbbf24;
+}
+
+/* ---------------------------------------------------------
+   Pagination (prev/next) — tighter, less shouty
+   --------------------------------------------------------- */
+
+.pagination-links a {
+  padding: 0.6rem 0.8rem;
+  box-shadow: none;
+  border-color: var(--sl-color-hairline);
+}
+
+.pagination-links .link-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.pagination-links svg {
+  width: 1rem;
+  height: 1rem;
+}
